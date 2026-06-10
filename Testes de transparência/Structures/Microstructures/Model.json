@@ -1,0 +1,22 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "H_hole1_height": "7.25",
+            "H_hole2_height": "12",
+            "foot_diameter": "25",
+            "foot_height": "5",
+            "head_height": "0",
+            "hole_diameter": "4",
+            "hollow_ratio": "0",
+            "ms_ap1": "1.5",
+            "ms_ap2": "1",
+            "ms_ap3": "2",
+            "ms_core": "7.1428571429999996",
+            "ms_type": "Hexagonal",
+            "preform_diameter": "15",
+            "preform_length": "5",
+            "resolution": "200"
+        }
+    }
+}
