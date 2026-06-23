@@ -1,0 +1,8 @@
+\babel@toc {brazil}{}\relax 
+\contentsline {section}{\numberline {1}Geometria e material}{2}{section.1}%
+\contentsline {section}{\numberline {2}Puxamento}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Primeiro puxamento}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Armazenamento}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Segundo puxamento}{6}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Primeira tentativa}{6}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Segunda tentativa}{7}{subsubsection.2.3.2}%
