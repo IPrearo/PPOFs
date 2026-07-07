@@ -1,0 +1,49 @@
+{
+    "eng_plate_temp": [
+        "90"
+    ],
+    "eng_plate_temp_initial_layer": [
+        "90"
+    ],
+    "fan_max_speed": [
+        "0"
+    ],
+    "fan_min_speed": [
+        "0"
+    ],
+    "filament_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+    ],
+    "filament_flow_ratio": [
+        "0.97",
+        "nil"
+    ],
+    "filament_settings_id": [
+        "GLASS Bambu PETG Translucent"
+    ],
+    "from": "User",
+    "inherits": "Bambu PETG Translucent @BBL X1C",
+    "name": "GLASS Bambu PETG Translucent",
+    "nozzle_temperature": [
+        "280",
+        "nil"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "280",
+        "nil"
+    ],
+    "overhang_fan_speed": [
+        "0"
+    ],
+    "reduce_fan_stop_start_freq": [
+        "0"
+    ],
+    "textured_plate_temp": [
+        "90"
+    ],
+    "textured_plate_temp_initial_layer": [
+        "90"
+    ],
+    "version": "2.5.0.5"
+}

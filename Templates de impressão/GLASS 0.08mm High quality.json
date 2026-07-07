@@ -1,0 +1,99 @@
+{
+    "bottom_shell_layers": "0",
+    "bottom_surface_pattern": "alignedrectilinear",
+    "bridge_speed": [
+        "10",
+        "nil"
+    ],
+    "brim_type": "outer_only",
+    "brim_width": "7",
+    "default_acceleration": [
+        "150",
+        "nil"
+    ],
+    "detect_narrow_internal_solid_infill": "0",
+    "enable_arc_fitting": "0",
+    "from": "User",
+    "gap_infill_speed": [
+        "10",
+        "230"
+    ],
+    "infill_direction": "0",
+    "infill_wall_overlap": "35%",
+    "inherits": "0.08mm High Quality @BBL X1C",
+    "initial_layer_acceleration": [
+        "150",
+        "nil"
+    ],
+    "initial_layer_infill_speed": [
+        "10",
+        "nil"
+    ],
+    "initial_layer_line_width": "0.55",
+    "initial_layer_print_height": "0.12",
+    "initial_layer_speed": [
+        "10",
+        "nil"
+    ],
+    "inner_wall_line_width": "0.55",
+    "inner_wall_speed": [
+        "10",
+        "150"
+    ],
+    "internal_solid_infill_line_width": "0.55",
+    "internal_solid_infill_pattern": "alignedrectilinear",
+    "internal_solid_infill_speed": [
+        "10",
+        "180"
+    ],
+    "line_width": "0.55",
+    "name": "GLASS 0.08mm High quality",
+    "outer_wall_acceleration": [
+        "150",
+        "nil"
+    ],
+    "outer_wall_line_width": "0.55",
+    "outer_wall_speed": [
+        "10",
+        "nil"
+    ],
+    "overhang_1_4_speed": [
+        "10",
+        "nil"
+    ],
+    "overhang_2_4_speed": [
+        "10",
+        "nil"
+    ],
+    "print_extruder_id": [
+        "1",
+        "1"
+    ],
+    "print_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+    ],
+    "print_settings_id": "GLASS 0.08mm High quality",
+    "process_notes": "python3 \"/media/ivan/big_drive/Projetos/Impressoes 3D/BrickLayers/bricklayers.py\"",
+    "skeleton_infill_line_width": "0.55",
+    "skin_infill_line_width": "0.55",
+    "sparse_infill_density": "100%",
+    "sparse_infill_line_width": "0.55",
+    "sparse_infill_pattern": "concentric",
+    "sparse_infill_speed": [
+        "10",
+        "180"
+    ],
+    "top_shell_layers": "0",
+    "top_surface_acceleration": [
+        "150",
+        "nil"
+    ],
+    "top_surface_pattern": "alignedrectilinear",
+    "top_surface_speed": [
+        "10",
+        "nil"
+    ],
+    "version": "2.5.0.5",
+    "wall_loops": "1"
+}
