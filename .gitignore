@@ -6,3 +6,4 @@
 *.synctex.gz
 *.fdb_latexmk
 .venv*
+codigos/Plot_dados_puxamento/*/
