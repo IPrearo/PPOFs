@@ -34,7 +34,7 @@
   Page \thepage\ of \pageref{LastPage}
 }
 \lfoot{\small \textcopyright\ 2026 LaFE. All rights reserved.}
-\rfoot{\small Última data de revisão: 11/06/2026}
+\rfoot{\small Última data de revisão: 13/07/2026}
 
 \begin{document}
 
@@ -208,7 +208,7 @@
   Comentários gerais sobre esta tentativa:
   \begin{itemize}
     \item Data de puxamento: 11/06/2026.
-    \item A rampa de puxamento é mostrada na Tabela \ref{tab:puxamento1_fase2_etapa1_rampa}.
+    \item A rampa de puxamento é mostrada na Tabela \ref{tab:puxamento1_fase2_tentativa1_rampa}.
     \item Resultou em falha.
   \end{itemize}
 
@@ -239,7 +239,7 @@
       \bottomrule
     \end{tabular}
     \caption{Rampa de temperatura no forno da torre antes do puxamento.}
-    \label{tab:puxamento1_fase2_etapa1_rampa}
+    \label{tab:puxamento1_fase2_tentativa1_rampa}
   \end{table}
 
   \begin{figure}[H]
@@ -257,33 +257,184 @@
   \subsubsection{Segunda tentativa}
   \label{subsubsec:puxamento2_tentativa2}
 
-  % \section{Resultados}
-  % \label{sec:puxamento_resultados}
+  Comentários gerais sobre esta tentativa:
+  \begin{itemize}
+    \item Data de puxamento: 10/07/2026.
+    \item A rampa de puxamento é mostrada na Tabela \ref{tab:puxamento1_fase2_tentativa2_rampa}.
+    \item O puxamento resultou em sucesso parcial, produzindo dezenas de metros de fibra antes do rompimento.
+    \item Ainda houve sobra significativa do \textit{cane} produzido no primeiro estágio, suficiente para uma terceira tentativa de puxamento.
+  \end{itemize}
 
-  % Comentários gerais dos resultados:
-  % \begin{itemize}
-  %   \item A foto do primeiro estágio produzido é mostrada em Fig.~\ref{fig:puxamento1_resultados_estagio1}.
-  %   \item O gráfico do perfil the diâmetro do primeiro estágio é mostrado em Fig.~\ref{fig:puxamento1_resultados_perfil}.
-  % \end{itemize}
+  A segunda tentativa de puxamento do \textit{cane} para fibra óptica utilizou uma rampa de temperatura mais demorada, mostrada na Tabela \ref{tab:puxamento1_fase2_tentativa2_rampa}.
+  A intenção de uma rampa de temperatura mais longa é o maior amolecimento do \textit{cane} antes de puxá-lo.
+  Durante o puxamento também foi verificada a tensão na fibra frequentemente.
+  Caso a tensão aumentasse continuamente, a temperatura do forno era aumentada; e caso diminuísse continuamente, a temperatura do forno era diminuída.
+  Essas mudanças são melhor visualizadas na Figura \ref{fig:puxamento2_tentativa2_temperaturas}.
+  Isso foi feito para evitar a falha catastrófica que ocorreu na primeira tentativa de puxamento.
 
-  % \begin{figure}[H]
-  %   \centering
-  %     \begin{subfigure}{0.45\textwidth}
-  %     \centering
-  %     \includegraphics[scale=0.5]{}
-  %     \caption{Foto do primeiro estágio.}
-  %     \label{fig:puxamento1_fase2_resultados_estagio1}
-  %   \end{subfigure}
-  %   \hfill
-  %   \begin{subfigure}{0.45\textwidth}
-  %     \centering
-  %     \includegraphics[scale=0.5]{}
-  %     \caption{Perfil do diâmetro do primeiro estágio.}
-  %     \label{fig:puxamento1_resultados_perfil}
-  %   \end{subfigure}
-  %   \caption{}
-  % \end{figure}
-  
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}   
+      \toprule 
+      \textbf{Fase} & \textbf{[°C]} & \textbf{Tempo [min]} \\ 
+      \midrule
+      \multirow{1}{*}{Secagem} & 60 & 60 \\
+      \midrule
+      \multirow{1}{*}{Amolecimento} & 80 & 60 \\
+      \midrule
+      \multirow{3}{*}{Escoamento} & 100 & 30 \\
+                                  & 110 & 20 \\
+                                  & 120 & 15 \\
+      \midrule
+      \multirow{8}{*}{Puxamento} & 120 & 30 \\
+                                 & 125 & 20 \\
+                                 & 123 & 15 \\
+                                 & 125 & 7 \\
+                                 & 128 & 8 \\
+                                 & 130 & 37 \\
+                                 & 128 & 12 \\
+                                 & 125 & -- \\
+      \bottomrule
+    \end{tabular}
+    \caption{Rampa de temperatura no forno da torre antes do puxamento para a segunda tentativa.}
+    \label{tab:puxamento1_fase2_tentativa2_rampa}
+  \end{table}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{./images/Temperatura.png}
+    \caption{Gráfico de temperatura ao longo da fase de puxamento.}
+    \label{fig:puxamento2_tentativa2_temperaturas}
+  \end{figure}
+
+  Durante o puxamento, após a transição da tampa no \textit{tractor}, houve o aumento de ambas a velocidades de \textit{feed} e \textit{pull}.
+  O aumento dessas velocidades foi feito gradualmente e conjuntamente, a fim de manter a fibra puxada a um diâmetro de 1 mm.
+  Essas mudanças de velocidades foram controladas para não coincidir exatamente com as mudanças de temperatura, a fim de deixar o puxamento mais estável, e estão graficadas na Figura \ref{fig:puxamento2_tentativa2_velocidades}.
+  Nota-se que a razão entre velocidades não foi realizada de acordo com a teoria quando usa-se conversação de massa para encontrar os valores ideais.
+  Isso se deve pela observação experimental da fibra puxada constar consistentemente abaixo do diâmetro previsto para cada par $(v_{feed}, v_{pull})$,
+  essa observação pode ser visualizada nas Figuras \ref{fig:puxamento2_tentativa2_razoes} e \ref{fig:puxamento2_tentativa2_desvio} (até a marca de $\approx$60 minutos).
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+      \toprule 
+      \textbf{Tempo [min]} & $v_{feed}$ [mm/min] & $v_{pull}$ [m/min] \\ 
+      \midrule
+      5 & 0.05 & 0.01 \\
+      3 & 0.05 & 0.015 \\
+      3 & 0.05 & 0.02 \\
+      2 & 0.05 & 0.025 \\
+      33 & 0.05 & 0.03 \\
+      7 & 0.6 & 0.035 \\
+      5 & 0.75 & 0.04 \\
+      5 & 0.85 & 0.045 \\
+      10 & 1 & 0.05 \\
+      4 & 1 & 0.06 \\
+      3 & 1.15 & 0.07 \\
+      20 & 1.25 & 0.09 \\
+      10 & 1.25 & 0.1 \\
+      10 & 1.5 & 0.13 \\
+      3 & 2 & 0.3 \\
+      3 & 2 & 0.5 \\
+      2 & 2 & 0.7 \\
+      -- & 2 & 1 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{./images/Velocidades.png}
+    \caption{Gráfico de velocidades de \textit{feed} e \textit{pull} ao longo da fase de puxamento. Nota-se que a velocidade de puxamento está nula por um período próximo de 100 min. Isso ocorreu pela troca de puxamento do tractor para capstan e não é condizente com os valores reais.}
+    \label{fig:puxamento2_tentativa2_velocidades}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{./images/Razoes_vel_e_diam.png}
+    \caption{Gráfico das razões das velocidades de alimentação e puxamento em relação ao diâmetro medido. A razão de diâmetros está quadrada pois a razão teórica depende quadraticamente da razão de velocidades.}
+    \label{fig:puxamento2_tentativa2_razoes}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{./images/Desvio_vel_e_diam.png}
+    \caption{Desvio dos diâmetros encontrados em relação à teoria.}
+    \label{fig:puxamento2_tentativa2_desvio}
+  \end{figure}
+
+  A falha do puxamento com um súbito aumento da tensão na fibra após a última mudança de temperatura.
+  Imagina-se que a temperatura ideal para o puxamento seja acima de 125$^\circ$C por conta disso.
+  Mesmo assim, dezenas de metros de fibra foram fabricados. Mais detalhes serão discutidos na seção \ref{subsec:resultados_segunda_tentativa}.
+
+  \section{Resultados}
+  \label{sec:puxamento_resultados}
+
+  A seção de resultados será dividida em subseções relacionadas com as tentativas de segundo puxamento.
+
+  \subsection{Segunda tentativa}
+  \label{subsec:resultados_segunda_tentativa}
+
+  Comentários gerais dos resultados:
+  \begin{itemize}
+    \item As fotos das fibras produzidas estão na Figura \ref{fig:puxamento2_tentativa2}.
+    \item A micrografia da Figura \ref{fig:puxamento2_tentativa2_micrografias} demonstra a qualidade e dimensão final da fibra atingida.
+  \end{itemize}
+
+  \begin{figure}[H]
+    \centering
+      \begin{subfigure}{0.7\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/Fibras_segunda_tentativa.jpeg}
+      \caption{Pequena coleção de fibras resultantes da segunda tentativa de puxamento.}
+      \label{fig:puxamento2_tentativa2_colecao}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.9\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/Rolo_fibra_segunda_tentativa.png}
+      \caption{Dezenas de metros de fibra produzida na segunda tentativa.}
+      \label{fig:puxamento2_tentativa2_rolo}
+    \end{subfigure}
+    \caption{Resultado da segunda tentativa de puxamento do \textit{cane}.}
+    \label{fig:puxamento2_tentativa2}
+  \end{figure}
+
+
+  \begin{figure}[H]
+    \centering
+      \begin{subfigure}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/Diam_ext.png}
+      \caption{Medida de um dos diâmetros externos da fibra.}
+      \label{fig:puxamento2_tentativa2_micro_diam_ext1}
+    \end{subfigure}
+    \hfill
+      \begin{subfigure}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/Diam_ext2.png}
+      \caption{Medida do segundo diâmetro externo da fibra.}
+      \label{fig:puxamento2_tentativa2_micro_diam_ext2}
+    \end{subfigure}
+    \hfill
+      \begin{subfigure}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/Diam_int1.png}
+      \caption{Medida de um dos diâmetros do núcleo da fibra.}
+      \label{fig:puxamento2_tentativa2_micro_diam_int1}
+    \end{subfigure}
+    \hfill
+      \begin{subfigure}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{images/Diam_int2.png}
+      \caption{Medida do segundo diâmetro do núcleo da fibra.}
+      \label{fig:puxamento2_tentativa2_micro_diam_int2}
+    \end{subfigure}
+    \hfill
+    \caption{Micrografia de uma seção de fibra da segunda tentativa de puxamento do \textit{cane}.}
+    \label{fig:puxamento2_tentativa2_micrografias}
+  \end{figure}
+
   % \section*{Puxamento 2}
   % \label{sec:puxamento2}
 

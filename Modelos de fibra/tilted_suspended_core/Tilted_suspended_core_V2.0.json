@@ -1,7 +1,7 @@
 {
     "fileFormatVersion": "1",
     "parameterSets": {
-        "Test_set": {
+        "New set 1": {
             "H_hole1_height": "6",
             "H_hole2_height": "10.5",
             "foot_diameter": "15",
@@ -10,7 +10,7 @@
             "hf_grad_transition": "true",
             "hole_diameter": "4",
             "hollow_ratio": "0",
-            "include_head": "true",
+            "include_head": "false",
             "ms_clad_thick": "3",
             "ms_core": "2.3999999999999999",
             "ms_strut_angle": "5",
@@ -19,9 +19,9 @@
             "ms_strut_spiral": "true",
             "ms_strut_width": "0.55000000000000004",
             "preform_diameter": "15",
-            "preform_length": "100",
+            "preform_length": "20",
             "resolution": "200",
-            "solid_hf_diam": "0"
+            "solid_hf_diam": "6"
         }
     }
 }

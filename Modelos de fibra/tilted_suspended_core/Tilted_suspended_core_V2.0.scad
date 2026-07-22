@@ -206,9 +206,16 @@ module preform(){
     }
 }
 
-reflatten_base()
-    preform();
 
+color("darkseagreen")
+// color("indianred")
+difference(){
+    reflatten_base()
+        preform();
+        
+    translate([0,-150,0])
+    cube([300,300,300]);
+}
 
 
 
