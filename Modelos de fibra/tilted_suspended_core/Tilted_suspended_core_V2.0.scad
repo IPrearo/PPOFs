@@ -208,14 +208,22 @@ module preform(){
 
 
 color("darkseagreen")
-// color("indianred")
+rotate([ms_strut_angle,0,0])
+reflatten_base()
+    preform();
+
+/*
+//  CORTE TRANSVERSAL
 difference(){
+    rotate([ms_strut_angle,0,0])
     reflatten_base()
         preform();
         
     translate([0,-150,0])
     cube([300,300,300]);
 }
+*/
+
 
 
 
