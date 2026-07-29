@@ -130,12 +130,15 @@ module _hexagonal(d, core_d, hole_d, n_rings, ms_ap3){
 }
 
 
-module _hollow_core(d, core, thick, spacing, n){
+module _hollow_core(d, core, thick, spacing, n, excentricity=1.0){
     delta_t = 360/n;
     r_ext = core/2;
     aux_sqrt = sqrt(2-2*cos(delta_t));
     r_int_ext = ( r_ext * aux_sqrt - spacing ) / (2 + aux_sqrt);
     r_int_int = r_int_ext - thick;
+    
+    exc1 = excentricity;
+    exc2 = (r_int_ext*exc1 - thick) / r_int_int;
     
     echo("Rint:", r_int_int);
     
@@ -146,11 +149,18 @@ module _hollow_core(d, core, thick, spacing, n){
             circle(d=core);
         }
         
-        copy_and_rotate(n){
-            translate([r_ext-r_int_ext,0,0])
-            difference(){
-                circle(r=r_int_ext);
-                circle(r=r_int_int);
+        intersection(){
+            circle(d=d);
+        
+            copy_and_rotate(n){
+                translate([(r_ext-r_int_ext)*exc1,0,0])
+                difference(){
+                    scale([exc1,1,1])
+                    circle(r=r_int_ext);
+                    
+                    scale([exc2,1,1])
+                    circle(r=r_int_int);
+                }
             }
         }
     }
@@ -186,6 +196,70 @@ module _mnanf(d, core, thick, spacing, n, m){
 }
 
 
+/*
+    P R E S S U R I Z A T I O N   M O D U L E S
+*/
+
+module _pressure_hollow_core(d, core, thick, spacing, n, excentricity=1.0){
+    delta_t = 360/n;
+    r_ext = core/2;
+    aux_sqrt = sqrt(2-2*cos(delta_t));
+    r_int_ext = ( r_ext * aux_sqrt - spacing ) / (2 + aux_sqrt);
+    r_int_int = r_int_ext - thick;
+    
+    //excentricity for the EXTERIOR of inner capillaries
+    exc1 = excentricity;
+    //excentricity for the INTERIOR of inner capillaries
+    exc2 = (r_int_ext*exc1 - thick) / r_int_int;
+    
+    difference(){
+        // Outer circle (cladding)
+        circle(d=d);
+    
+        
+        intersection(){
+            circle(d=core);
+        
+            copy_and_rotate(n){
+                translate([(r_ext-r_int_ext)*exc1,0,0])
+                scale([exc2,1,1])
+                    circle(r=r_int_int);
+            }
+        }
+    }
+}
+
+
+
+module _pressure_MNANF(d, core, thick, spacing, n, m){
+    delta_t = 360/n;
+    r_ext = core/2;
+    aux_sqrt = sqrt(2-2*cos(delta_t));
+    r_int_ext = ( r_ext * aux_sqrt - spacing ) / (2 + aux_sqrt);
+    r_int_int = r_int_ext - thick;
+    
+    d_list = [
+        for(i=[1:m+1], di=2*r_int_ext*i/(m+1))
+            di
+    ];
+    
+    difference(){
+        // Outer circle (cladding)
+        circle(d=d);
+        
+        intersection(){
+            circle(d=core);
+            copy_and_rotate(n){
+                translate([r_ext-r_int_int,0,0])
+                difference(){
+                    circle(r=r_int_int);
+                    _tangential_circles(d_list, thick);
+                }
+            }
+        }
+    }
+}
+
 
 /*
     E X P O R T   M O D U L E S
@@ -206,9 +280,39 @@ module _microstructure(ms_type,preform_diameter,ms_core,ms_ap1,ms_ap2,ms_ap3,ms_
         _hexagonal(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3);
     }
     else if(ms_type == "Hollow_core"){
-        _hollow_core(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3);
+        _hollow_core(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3, ms_ap4);
     }
     else if(ms_type == "MNANF"){
         _mnanf(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3, ms_ap4);
     }
 }
+
+
+module _pressure_lid(ms_type,preform_diameter,ms_core,ms_ap1,ms_ap2,ms_ap3,ms_ap4=0){
+
+    if(ms_type == "None" || ms_type == "No-core"){
+        circle(d=preform_diameter);
+    }
+    else if(ms_type == "Capillary"){
+        _capillary(preform_diameter, ms_core);
+    }
+    else if(ms_type == "Suspended"){
+        _suspended_core(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3);
+    }
+    else if(ms_type == "Hexagonal"){
+        _hexagonal(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3);
+    }
+    else if(ms_type == "Hollow_core"){
+        _pressure_hollow_core(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3, ms_ap4);
+    }
+    else if(ms_type == "MNANF"){
+        _pressure_MNANF(preform_diameter, ms_core, ms_ap1, ms_ap2, ms_ap3, ms_ap4);
+        //assert(false, "MNANF pressure lid not implemented");
+    }
+
+
+}
+
+
+//linear_extrude(h=10)
+//_pressure_hollow_core(d=70, core=55, thick=2, spacing=1, n=5);
