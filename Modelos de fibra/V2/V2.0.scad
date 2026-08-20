@@ -84,6 +84,8 @@ pressurizing = false; // [true, false]
 escape_air_holes = 0;
 // Angle for the escaping air holes
 air_holes_angle = 0;
+// Diameter for the escaping air holes
+air_holes_diameter = 2;
 // Whether the head/foot should have a solid diameter (for support)
 solid_hf_diam = 0;
 // Head heigth
@@ -95,9 +97,9 @@ foot_height = 15;
 // Diameter for the head holes
 hole_diameter = 4;
 // First hole's height
-H_hole1_height = 6.00;
+H_hole1_height = 3.5;
 // Second hole's height
-H_hole2_height = 10.5;
+H_hole2_height = 8.0;
 
 
 /* [ Rendering ] */
@@ -125,6 +127,16 @@ module pressure_lid(){
     rotate([0,0,ms_rotation])
     _pressure_lid(ms_type,preform_diameter,ms_core,ms_ap1,ms_ap2,ms_ap3,ms_ap4);
 }
+
+
+module copy_and_rotate(n){
+    for(i=[0:n-1], t=360/n*i){
+        rotate([0,0,t])
+            children();
+    }
+}
+
+
 
 module foot_holes(){
     hole_length = max(foot_diameter, preform_diameter);
@@ -155,7 +167,7 @@ module one_sided_escaping_air_holes(){
     copy_and_rotate(escape_air_holes){
         translate([ms_core/2-delta,0,head_height+hole_diameter/2])
         rotate([0,90,0])
-            cylinder(h=hole_len, d=hole_diameter);
+            cylinder(h=hole_len, d=air_holes_diameter);
     }
 }
 
@@ -209,7 +221,11 @@ module foot(){
             }
         
         if(pressurizing){
-            equalization_h = min(H_hole1_height, H_hole2_height)/2;
+            // Height for equalization volume ir based on
+            //  the minimal distance between the start of a
+            //  pin hole and the end of the preform.
+            //  It is, in fact, half of that.
+            equalization_h = (min(H_hole1_height, H_hole2_height) - hole_diameter/2) / 2;
             cylinder(h=equalization_h, d=ms_core);
         }
     

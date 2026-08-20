@@ -61,14 +61,13 @@ function _interpolated_polygon(n, d, n_interp) = [
             ]
     ];
 
-
-module copy_and_rotate(n){
+    
+module _copy_and_rotate(n){
     for(i=[0:n-1], t=360/n*i){
         rotate([0,0,t])
             children();
     }
 }
-
 
 module _tangential_circles(d_list, thickness){
     max_r = max(d_list)/2;
@@ -78,6 +77,22 @@ module _tangential_circles(d_list, thickness){
             circle(d=d);
             circle(r=r-thickness);
         }
+}
+
+module _shell(delta){
+    if(delta>0){
+        difference(){
+            offset(delta=delta)
+                children();
+            children();
+        }
+    } else {
+        difference(){
+            children();
+            offset(delta=delta)
+                children();
+        }
+    }
 }
 
 /*
@@ -102,7 +117,7 @@ module _suspended_core(d, core, w, n, t){
         // Core
         circle(d=core);
         
-        copy_and_rotate(n)
+        _copy_and_rotate(n)
             translate([d/4,0,0])
             square([d/2, w], center=true);
         
@@ -138,7 +153,8 @@ module _hollow_core(d, core, thick, spacing, n, excentricity=1.0){
     r_int_int = r_int_ext - thick;
     
     exc1 = excentricity;
-    exc2 = (r_int_ext*exc1 - thick) / r_int_int;
+    
+    translation = exc1==1 ? r_ext-r_int_ext : r_ext;
     
     echo("Rint:", r_int_int);
     
@@ -152,15 +168,11 @@ module _hollow_core(d, core, thick, spacing, n, excentricity=1.0){
         intersection(){
             circle(d=d);
         
-            copy_and_rotate(n){
-                translate([(r_ext-r_int_ext)*exc1,0,0])
-                difference(){
+            _copy_and_rotate(n){
+                translate([translation,0,0])
+                _shell(-thick)
                     scale([exc1,1,1])
                     circle(r=r_int_ext);
-                    
-                    scale([exc2,1,1])
-                    circle(r=r_int_int);
-                }
             }
         }
     }
@@ -188,7 +200,7 @@ module _mnanf(d, core, thick, spacing, n, m){
             circle(d=core);
         }
         
-        copy_and_rotate(n){
+        _copy_and_rotate(n){
             translate([r_ext-r_int_int,0,0])
             _tangential_circles(d_list, thick);
         }
@@ -212,6 +224,8 @@ module _pressure_hollow_core(d, core, thick, spacing, n, excentricity=1.0){
     //excentricity for the INTERIOR of inner capillaries
     exc2 = (r_int_ext*exc1 - thick) / r_int_int;
     
+    translation = exc1==1 ? r_ext-r_int_ext : r_ext;
+    
     difference(){
         // Outer circle (cladding)
         circle(d=d);
@@ -220,8 +234,8 @@ module _pressure_hollow_core(d, core, thick, spacing, n, excentricity=1.0){
         intersection(){
             circle(d=core);
         
-            copy_and_rotate(n){
-                translate([(r_ext-r_int_ext)*exc1,0,0])
+            _copy_and_rotate(n){
+                translate([translation,0,0])
                 scale([exc2,1,1])
                     circle(r=r_int_int);
             }
@@ -249,7 +263,7 @@ module _pressure_MNANF(d, core, thick, spacing, n, m){
         
         intersection(){
             circle(d=core);
-            copy_and_rotate(n){
+            _copy_and_rotate(n){
                 translate([r_ext-r_int_int,0,0])
                 difference(){
                     circle(r=r_int_int);
