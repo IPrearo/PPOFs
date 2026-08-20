@@ -43,6 +43,14 @@ use <Microstructures.scad>
 /* [ Miscellanious ] */
 //The resolution of the curves. Higher values give smoother curves but may increase the model render time.
 resolution = 50; //[50, 100, 200, 500]
+// Whether to render at every save
+always_render = false; // [true, false]
+// Make a transversal cut to check the preform?
+cut_transversal = false; // [true,false]
+// Make a longitudinal cut to check the preform?
+cut_longitudinal = false; // [true,false]
+// Longitudinal cut angle
+longitudinal_cut_angle = 0;
 $fn = resolution;
 
 
@@ -100,17 +108,8 @@ hole_diameter = 4;
 H_hole1_height = 3.5;
 // Second hole's height
 H_hole2_height = 8.0;
-
-
-/* [ Rendering ] */
-// Whether to render at every save
-always_render = false; // [true, false]
-// Make a transversal cut to check the preform?
-cut_transversal = false; // [true,false]
-// Make a longitudinal cut to check the preform?
-cut_longitudinal = false; // [true,false]
-// Longitudinal cut angle
-longitudinal_cut_angle = 0;
+// Elefant's foot compensation for resin (SLA/MSLA) printing
+elefant_foot = 0; // [0, 0.5]
 
 
 
@@ -133,6 +132,13 @@ module copy_and_rotate(n){
     for(i=[0:n-1], t=360/n*i){
         rotate([0,0,t])
             children();
+    }
+}
+
+module border(delta){
+    difference(){
+        children();
+        offset(delta=-delta) children();
     }
 }
 
@@ -255,7 +261,18 @@ module body(){
 module overall_shape(){
     union(){
         if(include_foot){
-            foot();
+            if(elefant_foot>0){
+                difference(){
+                    foot();
+                    
+                    linear_extrude(h=elefant_foot)
+                        border(elefant_foot)
+                        projection() foot();
+                }
+            } else{
+                foot();
+            }
+            
         }
         body();
         if(include_head){

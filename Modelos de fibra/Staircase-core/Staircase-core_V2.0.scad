@@ -125,7 +125,12 @@ module foot(){
 module head(){
     total_len = foot_height+preform_length+head_height;
     translate([0,0,total_len])
+    scale([1,1,head_height/foot_height])
+    difference(){
         mirror([0,0,1]) foot();
+        translate([0,0,-head_height])
+        cylinder(h=head_height, d=preform_diameter-2*ms_clad_thick);
+    }
 }
 
 module body(){

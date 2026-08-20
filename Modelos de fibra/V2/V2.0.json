@@ -104,6 +104,7 @@
             "always_render": "true",
             "cut_longitudinal": "false",
             "cut_transversal": "false",
+            "elefant_foot": "0.5",
             "escape_air_holes": "5",
             "foot_diameter": "10",
             "foot_height": "16",
