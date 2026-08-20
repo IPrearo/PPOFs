@@ -50,17 +50,17 @@ cut_transversal = false; // [true,false]
 // Make a longitudinal cut to check the preform?
 cut_longitudinal = false; // [true,false]
 // Longitudinal cut angle
-longitudinal_cut_angle = 0;
+longitudinal_cut_angle = 0; // 1 [0:360]
 $fn = resolution;
 
 
 /* [ Preform ] */
 // Length for the preform portion.
-preform_length = 100;
+preform_length = 100; // 1
 // Diameter for the preform portion
-preform_diameter = 15;
+preform_diameter = 15; // .1
 // How much of the preform's middle should be hollow (0 to 1)
-hollow_ratio = 0;
+hollow_ratio = 0; // .1 [0:1]
 
 /* [ Microstructure ] */
 // Microstructure rotation along Z axis in degrees
@@ -68,15 +68,15 @@ ms_rotation = 0;
 // Microstructure type, read more about them in the start of the script.
 ms_type = "Suspended"; // ["No-core", "Hexagonal", "Suspended", "Hollow_core", "MNANF"]
 // Microstructure core diameter
-ms_core = 2.4;
+ms_core = 2.4; // .01
 // Microstructure additional parameter 1
-ms_ap1 = 0.6;
+ms_ap1 = 0.6; // .01
 // Microstructure additional parameter 2
-ms_ap2 = 3.2;
+ms_ap2 = 3.2; // .1
 // Microstructure additional parameter 3
-ms_ap3 = 3;
+ms_ap3 = 3; // .1
 // Microstructure additional parameter 4
-ms_ap4 = 3.1;
+ms_ap4 = 3.1; // .1
 
 
 /* [ Head/Foot ] */
@@ -89,27 +89,27 @@ hf_grad_transition = true; // [true, false]
 // Whether to use the pressurization lid version for head and foot
 pressurizing = false; // [true, false]
 // Number of holes for the air to escape
-escape_air_holes = 0;
+escape_air_holes = 0; // 1
 // Angle for the escaping air holes
-air_holes_angle = 0;
+air_holes_angle = 0; // [0:360]
 // Diameter for the escaping air holes
 air_holes_diameter = 2;
 // Whether the head/foot should have a solid diameter (for support)
-solid_hf_diam = 0;
+solid_hf_diam = 0; // .1
 // Head heigth
-head_height = 15;
+head_height = 15; // .1
 // Bottom foot diameter
-foot_diameter = 15;
+foot_diameter = 15; // .1
 // Foot height. Changes how gradual is the transition between foot diameter and preform diameter
-foot_height = 15;
+foot_height = 15; // .1
 // Diameter for the head holes
-hole_diameter = 4;
+hole_diameter = 4; // .1
 // First hole's height
-H_hole1_height = 3.5;
+H_hole1_height = 3.5; // .1
 // Second hole's height
-H_hole2_height = 8.0;
+H_hole2_height = 8.0; // .1
 // Elefant's foot compensation for resin (SLA/MSLA) printing
-elefant_foot = 0; // [0, 0.5]
+elefant_foot = 0; // .01 [0, 0.5]
 
 
 
