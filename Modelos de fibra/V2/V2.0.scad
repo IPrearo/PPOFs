@@ -86,14 +86,6 @@ include_head = true; // [true, false]
 include_foot = true; // [true, false]
 // Chooses wether the head/foot transition is gradual
 hf_grad_transition = true; // [true, false]
-// Whether to use the pressurization lid version for head and foot
-pressurizing = false; // [true, false]
-// Number of holes for the air to escape
-escape_air_holes = 0; // 1
-// Angle for the escaping air holes
-air_holes_angle = 0; // [0:360]
-// Diameter for the escaping air holes
-air_holes_diameter = 2;
 // Whether the head/foot should have a solid diameter (for support)
 solid_hf_diam = 0; // .1
 // Head heigth
@@ -111,6 +103,15 @@ H_hole2_height = 8.0; // .1
 // Elefant's foot compensation for resin (SLA/MSLA) printing
 elefant_foot = 0; // .01 [0, 0.5]
 
+/* [ Pressurization ] */
+// Whether to use the pressurization lid version for head and foot
+pressurizing = false; // [true, false]
+// Number of holes for the air to escape
+escape_air_holes = 0; // 1
+// Angle for the escaping air holes
+air_holes_angle = 0; // [0:360]
+// Diameter for the escaping air holes
+air_holes_diameter = 2;
 
 
 total_height = head_height+preform_length+foot_height;
