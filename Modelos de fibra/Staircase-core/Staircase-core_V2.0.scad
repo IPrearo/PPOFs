@@ -3,6 +3,14 @@
 /* [ Miscellanious ] */
 //The resolution of the curves. Higher values give smoother curves but may increase the model render time.
 resolution = 50; //[50, 100, 200, 500]
+// Renders the preform after every change
+always_render = false; // [True, False]
+// Make a transversal cut to check the preform?
+cut_transversal = false; // [true,false]
+// Make a longitudinal cut to check the preform?
+cut_longitudinal = false; // [true,false]
+// Longitudinal cut angle
+longitudinal_cut_angle = 0; // [0:180]
 $fn = resolution;
 
 
@@ -23,11 +31,11 @@ ms_clad_thick = 3;
 // Microstructure strut width
 ms_strut_width = 0.55;
 // Microstructure strut angle
-ms_strut_angle = 5;
+ms_strut_angle = 5; // [0:10]
 // Microstructure number of struts
-ms_strut_number = 3;
+ms_strut_number = 3; // [0:20]
 // Microstruct distance between strut groups
-ms_strut_dist = 1.1;
+ms_strut_dist = 1.65;
 // Microstruct struts are spiral? This rearranges the struts to be evenly spaced in z within each group
 ms_strut_spiral = true; // [true, false]
 
@@ -49,9 +57,9 @@ foot_height = 15;
 // Diameter for the head holes
 hole_diameter = 4;
 // First hole's height
-H_hole1_height = 6.00;
+H_hole1_height = 3.5;
 // Second hole's height
-H_hole2_height = 10.5;
+H_hole2_height = 8.0;
 
 
 
@@ -206,23 +214,37 @@ module preform(){
     }
 }
 
-
-color("darkseagreen")
-rotate([ms_strut_angle,0,0])
-reflatten_base()
-    preform();
-
-/*
-//  CORTE TRANSVERSAL
-difference(){
-    rotate([ms_strut_angle,0,0])
-    reflatten_base()
-        preform();
-        
-    translate([0,-150,0])
-    cube([300,300,300]);
+module show_preform(){
+    //color("aquamarine")
+    if(!cut_transversal && !cut_longitudinal){
+        reflatten_base()
+            preform();
+    }
+    else{
+        difference(){
+            reflatten_base()
+                preform();
+            
+            if(cut_longitudinal){
+                rotate([0,0,longitudinal_cut_angle])
+                translate([-preform_diameter,0,-preform_length/2])
+                    cube([preform_diameter*2,preform_diameter*2,preform_length*2+head_height*2]);
+            }
+            
+            
+            if(cut_transversal){
+                translate([-preform_diameter,-preform_diameter,preform_length/2+head_height])
+                    cube([preform_diameter*2,preform_diameter*2,preform_length+2*head_height]);
+            }
+        }
+    }
 }
-*/
+    
+if(always_render){
+    render() show_preform();
+} else{
+    show_preform();
+}
 
 
 
