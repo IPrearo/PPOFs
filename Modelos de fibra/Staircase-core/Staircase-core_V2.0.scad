@@ -55,7 +55,7 @@ foot_diameter = 15;
 // Foot height. Changes how gradual is the transition between foot diameter and preform diameter
 foot_height = 15;
 // Diameter for the head holes
-hole_diameter = 4;
+hole_diameter = 4; // 0.1
 // First hole's height
 H_hole1_height = 3.5;
 // Second hole's height

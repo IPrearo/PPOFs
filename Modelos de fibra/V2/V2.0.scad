@@ -64,7 +64,7 @@ hollow_ratio = 0; // .1 [0:1]
 
 /* [ Microstructure ] */
 // Microstructure rotation along Z axis in degrees
-ms_rotation = 0;
+ms_rotation = 0; // [0:360]
 // Microstructure type, read more about them in the start of the script.
 ms_type = "Suspended"; // ["No-core", "Hexagonal", "Suspended", "Hollow_core", "MNANF"]
 // Microstructure core diameter

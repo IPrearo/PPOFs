@@ -18,21 +18,31 @@
             "preform_length": "200",
             "resolution": "200"
         },
-        "New set 1": {
-            "H_hole1_height": "7.25",
-            "H_hole2_height": "12",
-            "foot_diameter": "15",
+        "Exposition": {
+            "H_hole1_height": "3.5",
+            "H_hole2_height": "8",
+            "air_holes_angle": "60",
+            "air_holes_diameter": "3",
+            "always_render": "true",
+            "cut_longitudinal": "true",
+            "cut_transversal": "true",
+            "escape_air_holes": "3",
+            "foot_diameter": "30",
             "foot_height": "15",
             "head_height": "15",
-            "hole_diameter": "4",
+            "hf_grad_transition": "false",
+            "hole_diameter": "3.5",
             "hollow_ratio": "0",
             "ms_ap1": "0.59999999999999998",
-            "ms_ap2": "3",
-            "ms_ap3": "2",
-            "ms_core": "2.3999999999999999",
-            "ms_type": "Suspended",
-            "preform_diameter": "15",
-            "preform_length": "100",
+            "ms_ap2": "0.29999999999999999",
+            "ms_ap3": "3",
+            "ms_ap4": "2",
+            "ms_core": "18",
+            "ms_rotation": "0",
+            "ms_type": "Hollow_core",
+            "preform_diameter": "30",
+            "preform_length": "30",
+            "pressurizing": "true",
             "resolution": "200"
         },
         "HC_15mm": {
@@ -125,7 +135,6 @@
             "preform_diameter": "6",
             "preform_length": "100",
             "pressurizing": "false",
-            "resolution": "253",
             "solid_hf_diam": "0"
         }
     }
