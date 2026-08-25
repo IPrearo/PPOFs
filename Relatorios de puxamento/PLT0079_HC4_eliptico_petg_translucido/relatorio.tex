@@ -1,0 +1,273 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{subcaption}
+\usepackage{multirow}
+
+\newcommand{\diameter}{\phi}
+
+\graphicspath{{../../../imagens_gerais/} {images/}} 
+
+\pagestyle{fancy}
+\fancyhf{} 
+\setlength{\headheight}{52pt}
+\lhead{
+  \includegraphics[height=1.2cm]{lafe_logo_ingles.jpg} \\
+  \small
+  Doc ID: PLT0079 \quad
+  Doc tipo: Relatório de fabricação \quad
+}
+\rhead{
+  \small \textbf{PLT0079 Hollow-core elíptica (4 internos) - PETG translúcido} \\
+  Page \thepage\ of \pageref{LastPage}
+}
+\lfoot{\small \textcopyright\ 2026 LaFE. All rights reserved.}
+\rfoot{\small Última data de revisão: 21/08/2026}
+
+\begin{document}
+
+  Descrição da participação dos envolvidos na fabricação desta fibra:
+  \begin{itemize}
+    \item Ivan Prearo: Fabricação e puxamento
+  \end{itemize}
+
+  \section{Geometria e material}
+  \label{sec:geometria}
+
+  Comentários gerais sobre esta etapa:
+  \begin{itemize}
+    \item Pré-forma:
+    \begin{itemize}
+      \item Material: PETG esverdeado;
+      \item Geometria da secção transversal: \textit{Hollow-core} elíptica;
+      \item Comprimento total: \(L_T = 132 mm\);
+      \item Comprimento útil: \(L = 100 mm\); 
+      \item Diâmetro externo: \(\diameter_{out} = 15 mm\)
+      \item Espessura do cladding: \(L_c = 3 mm\);
+      \item Diâmetro dos capilares internos (eixo menor): \(\diameter_{in} = 3.98 mm\)
+      \item Espessura dos capilares internos: \(L_{in} = 0.6 mm\);
+      \item Número de capilares internos: \(N_{in} = 3\);
+      \item Excentricidade dos capilares internos: \(e_{in} = 2\);
+      \item Distância entre capilares internos\footnote{Essa distância é calculada como se os capilares internos fossem cilíndricos (\(e_{in} = 1\)), no entanto a distância real é, em geral, maior do que a escrita aqui. Estout trabalhando para obter cálculos mais precisos.}: \(D_{in} = 0.2 mm\)
+      \item Raio do eixo maior de \(r_{in}\equiv e_{in}\cdot\phi_{in}/2=3.98 mm\);
+      \item Razões entre medidas iniciais na Tabela \ref{tab:puxamento1_razoes_das_dimensoes}
+    \end{itemize}
+    \item Objetivo: Fabricação de fibra hollow-core com capilares elípticos e pressurização.
+    \item O esquema da geometria da secção transversal e a foto da pré-forma são mostrados em Fig.~\ref{fig:detalhes_secao_transversal}.
+  \end{itemize}
+
+  \begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+    Dimensão & Medida [mm] & Razão com $\diameter_e$ \\
+    \hline
+    $\diameter_{out}$ & 70 & 1 \\
+    $L_c$ & 12 & 0.171 \\
+    $\diameter_{in}$ & 9.6 & 0.137 \\
+    $L_{in}$ & 0.6 & 0.0086
+  \end{tabular}
+  \caption{Relações entre medidas relevantes da preforma}
+  \label{tab:puxamento1_razoes_das_dimensoes}
+  \end{table}
+
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.45\linewidth}
+      \centering
+      \includegraphics[height=0.9\linewidth]{images/Secao_transversal.png}
+      \caption{Seção transversal da fibra.}
+      \label{fig:secao_transversal}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.45\linewidth}
+      \centering
+      \includegraphics[height=0.9\linewidth]{images/Medidas_anotadas.png}
+      \caption{Medidas relevantes da estrutura.}
+      \label{fig:medidas_anotadas}
+    \end{subfigure}
+    \caption{Detalhamento da seção transversal da preforma.}
+    \label{fig:detalhes_secao_transversal}
+  \end{figure}
+
+  Como um dos objetivos principais desse puxamento é a pressurização da amostra de acordo com a Figura \ref{fig:pressoes}.
+  Para isso, a parte da preforma voltada à tampa de posicionamento foi fechada de acordo com a Figura \ref{fig:tampa_preforma}, mantendo um volume aberto entre os capilares internos para que haja pressurização igual entre eles (Figs. \ref{fig:vistas} e \ref{fig:vistas_com_anotacoes}).
+
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/Pressurizacao_anotada.png}
+      \caption{Seções de pressurização da fibra.}
+      \label{fig:pressoes}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/Secao_pressurizacao.png}
+      \caption{Tampa da preforma.}
+      \label{fig:tampa_preforma}
+    \end{subfigure}
+    
+    \begin{subfigure}[t]{0.49\linewidth}
+      \centering
+      \includegraphics[height=0.9\linewidth]{images/Vistas.png}
+      \caption{Vistas relevantes da preforma.}
+      \label{fig:vistas}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\linewidth}
+      \centering
+      \includegraphics[height=0.9\linewidth]{images/Vistas_anotadas.png}
+      \caption{Fig. \ref{fig:vistas} com anotações.}
+      \label{fig:vistas_com_anotacoes}
+    \end{subfigure}
+    \caption{Detalhamento da seção transversal da preforma.}
+    \label{fig:detalhamento_pressurizacao}
+  \end{figure}
+
+
+  \section{Puxamento}
+  \label{sec:puxamento}
+
+  Comentários gerais sobre esse puxamento:
+  \begin{itemize}
+    \item Data de puxamento: 30/07/2026.
+    \item A rampa de puxamento é mostrada na Tabela \ref{tab:puxamento_rampa}.
+    \item O puxamento resultou em sucesso, produzindo dezenas de metros de fibra a diferentes condições de pressurização antes do rompimento.
+  \end{itemize}
+
+  O puxamento ocorreu normalmente até a estabilização razoável do diâmetro da fibra enquanto puxada no \textit{capstan}, que inclui a banda lixo e de transição (Fig. \ref{fig:plot_diametro}).
+  Após a estabilidade no diâmetro, foram fabricadas três bandas com pressões incrementais, sendo 2, 3 e 4 mBar para as bandas A, B e C, respectivamente (Fig. \ref{fig:plot_pressao}).
+  Durante a fabricação da banda C, próximo ao alvo de pressurização, houve o rompimento da fibra.
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}   
+      \toprule 
+      \textbf{Fase} & \textbf{[°C]} & \textbf{Tempo [min]} \\ 
+      \midrule
+      \multirow{2}{*}{Secagem} & 60 & 60 \\
+                                & 80 & 20\\
+      \midrule
+      \multirow{2}{*}{Escoamento} & 100 & 5 \\
+                                & 110 & 2 \\ 
+      \midrule
+      \multirow{1}{*}{Puxamento} & 120 & --- \\
+      \bottomrule
+    \end{tabular}
+    \caption{Rampa de temperatura no forno da torre antes e durante o puxamento.}
+    \label{tab:puxamento_rampa}
+  \end{table}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Graficos/Diametro.png}
+    \caption{Diâmetro da fibra ao longo do puxamento.}
+    \label{fig:plot_diametro}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{Graficos/Pressao.png}
+    \caption{Pressão na preforma ao longo do puxamento.}
+    \label{fig:plot_pressao}
+  \end{figure}
+
+  \section{Resultados}
+  \label{sec:puxamento_resultados}
+
+  Comentários gerais dos resultados:
+  \begin{itemize}
+    \item As medidas absolutas e relativas relevantes estão na Tabela \ref{tab:medidas_abs_rel}.
+    \item As micrografias das fibras produzidas estão na Figura \ref{fig:micrografias}.
+  \end{itemize}
+
+  É bastante notável que, de acordo com a Tabela \ref{tab:medidas_abs_rel}, a excentricidade dos capilares internos aumentam consistentemente com a pressão.
+  No entanto, é necessário tomar tal informação com cautela, uma vez que a excentricidade dos capilares de uma mesma micrografia variam consideravelmente. No caso da banda C (Fig. \ref{fig:micrografia_C}), a menor excentricidade encontrada foi 1.34, enquanto a maior foi 1.68.
+  Mesmo com a excentricidade variando para valores inferiores aos sem aplicação de pressão, a média das excentricidades aumentar é significativo.
+
+  Também é importante manter em mente que os valores de excentricidade são calculados considerando uma elípse (como na Fig. \ref{fig:medidas_anotadas}), mas algumas micrografias mostram os capilares internos formando formatos mais circulares (Fig. \ref{fig:micrografia_B}), devido a tensão superficial do PETG.
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|cc|cc|cc|cc}
+      \multirow{2}{*}{Medida} & Inicial & \multicolumn{2}{c|}{Transição} & \multicolumn{2}{c|}{Banda A} & \multicolumn{2}{c|}{Banda B} & \multicolumn{2}{c}{Banda C} \\
+      \cline{2-10}
+      & Rel. & Abs. & Rel. & Abs. & Rel. & Abs. & Rel. & Abs. & Rel. \\
+      \hline
+      $\phi_{out}$       & 1.000
+                   & 596 & 1.000
+                   & 364 & 1.000
+                   & 369 & 1.000
+                   & 331 & 1.000 \\
+      $r_{in}$        & 0.265
+               & 122 & 0.205
+               & 78.8 & 0.216
+               & 76.6 & 0.208
+               & 77.4 & 0.234 \\
+      $\phi_{in}$       & 0.265
+                  & 176 & 0.296
+                  & 109 & 0.298
+                  & 104 & 0.282
+                  & 101 & 0.306 \\
+      $L_{in}$        & 0.040
+               & 54.8 & 0.090
+               & 30.0 & 0.083
+               & 34.9 & 0.095
+               & 26.3 & 0.079 \\
+      $L_{c}$        & 0.200
+              & 125 & 0.210
+              & 72.2 & 0.198
+              & 71.7 & 0.194
+              & 60.4 & 0.182 \\
+      $e_{in}$       & 2.00
+              & 1.38 & ---
+              & 1.45 & ---
+              & 1.49 & ---
+              & 1.52 & --- \\
+    \end{tabular}
+    \caption{Medidas absolutas e relativas de cada banda para todas as grandezas relevantes.
+    A medida de excentricidade não contém unidades, enquanto as outras medidas absolutas estão em $\mu$m.}
+    \label{tab:medidas_abs_rel}
+  \end{table}
+
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{Fotos/Banda_transicao.png}
+      \caption{Banda de transição.}
+      \label{fig:micrografia_transicao}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{Fotos/Banda_A.png}
+      \caption{Banda A.}
+      \label{fig:micrografia_A}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{Fotos/Banda_B.png}
+      \caption{Banda B.}
+      \label{fig:micrografia_B}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{Fotos/Banda_C.png}
+      \caption{Banda C.}
+      \label{fig:micrografia_C}
+    \end{subfigure}
+    \caption{Micrografias do final de cada banda.}
+    \label{fig:micrografias}
+  \end{figure}
+
+\end{document}

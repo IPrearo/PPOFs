@@ -27,7 +27,7 @@
             "resolution": "200",
             "solid_hf_diam": "12"
         },
-        "New set 2": {
+        "Preform": {
             "H_hole1_height": "3.5",
             "H_hole2_height": "8",
             "always_render": "true",
@@ -50,6 +50,38 @@
             "ms_strut_width": "0.55000000000000004",
             "preform_diameter": "15",
             "preform_length": "100",
+            "resolution": "200",
+            "solid_hf_diam": "6"
+        },
+        "Water_test": {
+            "H_hole1_height": "3.5",
+            "H_hole2_height": "8",
+            "N_lid_holes": "3",
+            "always_render": "true",
+            "cut_longitudinal": "false",
+            "cut_transversal": "false",
+            "foot_diameter": "15",
+            "foot_filling": "true",
+            "foot_height": "2",
+            "head_filling": "true",
+            "head_height": "2",
+            "hf_grad_transition": "true",
+            "hole_diameter": "4",
+            "hollow_ratio": "0",
+            "include_foot": "true",
+            "include_head": "true",
+            "lid_hole_angle": "30",
+            "lid_hole_diameter": "4",
+            "longitudinal_cut_angle": "0",
+            "ms_clad_thick": "1.5",
+            "ms_core": "2.3999999999999999",
+            "ms_strut_angle": "0",
+            "ms_strut_dist": "1.6499999999999999",
+            "ms_strut_number": "3",
+            "ms_strut_spiral": "true",
+            "ms_strut_width": "0.55000000000000004",
+            "preform_diameter": "15",
+            "preform_length": "40",
             "resolution": "200",
             "solid_hf_diam": "6"
         }

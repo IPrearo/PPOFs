@@ -16,20 +16,20 @@ $fn = resolution;
 
 /* [ Preform ] */
 // Length for the preform portion.
-preform_length = 50;
+preform_length = 50; // 1
 // Diameter for the preform portion
-preform_diameter = 15;
+preform_diameter = 15; // 0.1
 // How much of the preform's middle should be hollow (0 to 1)
-hollow_ratio = 0;
+hollow_ratio = 0; // 0.01
 
 /* [ Microstructure ] */
 // Microstructure type, read more about them in the start of the script.
 // Microstructure core diameter
-ms_core = 2.4;
+ms_core = 2.4; // 0.1
 // Microstructure cladding thickness
-ms_clad_thick = 3;
+ms_clad_thick = 3; // 0.1
 // Microstructure strut width
-ms_strut_width = 0.55;
+ms_strut_width = 0.55; // 0.05
 // Microstructure strut angle
 ms_strut_angle = 5; // [0:10]
 // Microstructure number of struts
@@ -44,6 +44,8 @@ ms_strut_spiral = true; // [true, false]
 /* [ Head/Foot ] */
 // Wether to include the head or not
 include_head = true; // [true, false]
+// Wether to include the head or not
+include_foot = true; // [true, false]
 // Chooses wether the head/foot transition is gradual
 hf_grad_transition = true; // [true, false]
 // Wether the head/foot should have a solid diameter (for support)
@@ -62,6 +64,19 @@ H_hole1_height = 3.5;
 H_hole2_height = 8.0;
 
 
+/* [ Demonstrations ] */
+// Number of lid holes
+N_lid_holes = 0; // 1
+// Lid hole rotation in Z [deg]
+lid_hole_angle = 0; // [0:360]
+// Lid hole diameter
+lid_hole_diameter = 0; // 0.1
+// Fill the head with solid material?
+head_filling = false; // [true, false]
+// Fill the foot with solid material?
+foot_filling = false; // [true, false]
+
+
 
 total_height = head_height+preform_length+foot_height;
 assert(hollow_ratio<1.0 && hollow_ratio >=0, "Hollow_ratio must be between 0 and 1.");
@@ -77,6 +92,18 @@ module microstructure(){
     }
 }
 
+
+module copy_and_rotate(N){
+    if(N>0){
+    for(i=[0:N-1], theta=360*i/N){
+        rotate(theta)
+            children();
+    }
+    }
+}
+
+
+
 module foot_holes(){
     union(){
         // Hole closest to the end of the model
@@ -91,6 +118,15 @@ module foot_holes(){
     }   
 }
 
+module lid_holes(){      
+    // Lid holes
+    h = max(foot_height, head_height);
+    rotate(lid_hole_angle)
+    copy_and_rotate(N_lid_holes)
+    translate([preform_diameter/4,0,0])
+    cylinder(h=h, d=lid_hole_diameter);
+}
+
 module head_holes(){
     translate([0,0,total_height])
         rotate([180,0,0])
@@ -99,14 +135,23 @@ module head_holes(){
 
 module all_holes(){
     union(){
-        foot_holes();
+        if(include_foot){
+            if(!foot_filling){
+                foot_holes();
+            }
+            lid_holes();
+        }
         if(include_head){
-            head_holes();
+            if(!head_filling){
+                head_holes();
+            }
+            translate([0,0,total_height-head_height])
+                lid_holes();
         }
     }
 }
 
-module foot(){
+module foot_head_template(filling=false){
     rescaling = foot_diameter / preform_diameter;
     
     ratio = hf_grad_transition ? preform_diameter/foot_diameter : 1;
@@ -118,23 +163,35 @@ module foot(){
             
             if(solid_hf_diam != 0)
                 circle(d=solid_hf_diam);
+                
+            if(filling)
+                circle(d=foot_diameter);
         }
-    //cylinder(h=foot_height, d1=foot_diameter, d2=preform_diameter);
+}
+
+module foot(){
+    foot_head_template(filling=foot_filling);
 }
 
 module head(){
     total_len = foot_height+preform_length+head_height;
+    
     translate([0,0,total_len])
     scale([1,1,head_height/foot_height])
     difference(){
-        mirror([0,0,1]) foot();
-        translate([0,0,-head_height])
-        cylinder(h=head_height, d=preform_diameter-2*ms_clad_thick);
+        mirror([0,0,1])
+            foot_head_template(filling=head_filling);
+        
+        if(!head_filling){
+            translate([0,0,-head_height])
+            cylinder(h=head_height, d=preform_diameter-2*ms_clad_thick);
+        }
     }
 }
 
 module body(){
-    translate([0,0,foot_height])
+    h = include_foot ? foot_height : 0;
+    translate([0,0,h])
         linear_extrude(preform_length)
             microstructure();
 }
@@ -171,15 +228,22 @@ module preform_struts(){
 }
 
 module overall_shape(){
-    union(){
-        foot();
-        body();
-        if(include_head){
-            head();
+    difference(){
+        union(){
+            if(include_foot){
+                foot();
+                translate([0,0,foot_height])
+                    preform_struts();
+            } else{
+                preform_struts();
+            }
+            body();
+            if(include_head){
+                head();
+            }
+            
         }
-        
-        translate([0,0,foot_height])
-            preform_struts();
+        all_holes();
     }
 }
 
@@ -203,8 +267,7 @@ module reflatten_base(){
 
 module preform(){
     rotate([-ms_strut_angle,0,0])
-    difference(){
-        if(hollow_ratio>0){ 
+    if(hollow_ratio>0){ 
         difference(){
             overall_shape();
             // Corrects float imprecision
@@ -212,10 +275,8 @@ module preform(){
                 scale([hollow_ratio,hollow_ratio,1.1])
                 overall_shape();
         }
-        } else{
-            overall_shape();
-        }
-        all_holes();
+    } else{
+        overall_shape();
     }
 }
 
@@ -245,6 +306,7 @@ module show_preform(){
     }
 }
     
+rotate([ms_strut_angle,0,0])
 if(always_render){
     render() show_preform();
 } else{
